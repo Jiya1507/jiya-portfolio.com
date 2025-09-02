@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiya | Graphic & Web Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#794AFF',
+                        secondary: '#B544EB',
+                        accent: '#F7C948',
+                        dark: '#0A0A23',
+                        light: '#F9FAFB',
+                        darkBg: '#19192b',
+                        darkCard: '#232345',
+                        darkText: '#d9e0f1',
+                        // Add colors for education section
+                        bgdark: '#121329',
+                        'blue-light': '#5189f4',
+                        'yellow-gold': '#f7c24e',
+                        'gray-dark': '#2f2e45',
+                        'gray-mid': '#a7a8ad',
+                        'gray-light': '#e2e3e6',
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        serif: ['Georgia', 'serif'],
+                        // Add font for education section
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            * {
+                @apply transition-colors duration-200;
+            }
+            body {
+                @apply font-poppins bg-gradient-to-br from-blue-50 to-purple-50 dark:from-darkBg dark:to-gray-900 text-gray-800 dark:text-darkText;
+            }
+            h1, h2, h3, h4 {
+                @apply font-semibold;
+            }
+            .gradient-text {
+                @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+            }
+            .glass-effect {
+                @apply bg-white/70 dark:bg-darkCard/90 backdrop-blur-md border border-white/20 dark:border-gray-700/30;
+            }
+            .section-title {
+                @apply text-3xl md:text-4xl font-bold text-center mb-12 gradient-text;
+            }
+            .btn-primary {
+                @apply bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white font-medium py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300;
+            }
+            .btn-secondary {
+                @apply bg-accent hover:bg-amber-400 text-dark font-medium py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300;
+            }
+            .card {
+                @apply glass-effect rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300;
+            }
+            .nav-link {
+                @apply text-gray-700 dark:text-darkText hover:text-primary dark:hover:text-accent font-medium transition-colors duration-300;
+            }
+            .page {
+                display: none;
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            .active-page {
+                display: block;
+            }
+            .active-nav {
+                @apply text-primary dark:text-accent;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .contact-icon {
+                @apply w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center;
+            }
+            
+            /* Education Section Styles */
+            .education-section {
+                @apply bg-bgdark text-gray-300 font-sans;
+            }
+            .education-container {
+                @apply max-w-[1110px] mx-auto px-6 py-8 md:py-12 space-y-14;
+            }
+            .education-card {
+                @apply bg-gray-dark rounded-xl p-5;
+            }
+            .education-timeline {
+                @apply absolute top-5 left-5 w-[2px] h-[calc(100%-40px)] bg-yellow-gold rounded;
+            }
+            .education-icon {
+                @apply absolute left-0 w-10 h-10 grid place-content-center rounded-full border-2 z-10;
+            }
+            
+            /* Custom styles for the About page integration */
+            .about-container {
+                @apply bg-[#12142b] text-[#e4e7fb];
+            }
+            .about-card {
+                @apply relative p-8 rounded-2xl bg-white/5 border border-white/10 shadow-xl overflow-hidden;
+            }
+            .about-heading {
+                @apply text-3xl font-bold mb-3 text-[#71b3ff];
+            }
+            .about-text {
+                @apply mb-7 leading-relaxed text-[#e4e7fb];
+            }
+            .about-subheading {
+                @apply text-lg font-semibold text-white mb-1;
+            }
+            .about-subtext {
+                @apply mb-8 text-[#b5b8d1] leading-relaxed;
+            }
+            .skill-box {
+                @apply bg-[#1e223d]/70 rounded-lg text-center py-5 font-semibold shadow hover:scale-105 hover:bg-[#16182a] transition-transform duration-300;
+            }
+            .timeline-container {
+                position: relative;
+                padding-left: 1.5rem;
+                border-left: 2px solid #ffe29b;
+            }
+            .timeline-item {
+                position: relative;
+                margin-bottom: 2rem;
+            }
+            .timeline-dot {
+                position: absolute;
+                left: -12px;
+                top: 0.75rem;
+                width: 1rem;
+                height: 1rem;
+                border-radius: 9999px;
+                background: #71b3ff;
+                box-shadow: 0 0 0 4px #12142b;
+                transition: all 0.3s ease;
+            }
+            .timeline-item:hover .timeline-dot {
+                transform: scale(1.3);
+                box-shadow: 0 0 10px 5px rgba(113,179,255, 0.6);
+            }
+            .scrollbar-custom {
+                scrollbar-width: thin;
+                scrollbar-color: #71b3ff #12142b;
+            }
+            .scrollbar-custom::-webkit-scrollbar {
+                width: 10px;
+                background: #12142b;
+            }
+            .scrollbar-custom::-webkit-scrollbar-thumb {
+                background: linear-gradient(120deg, #71b3ff 35%, #ffe29b 100%);
+                border-radius: 8px;
+                border: 2px solid #12142b;
+                transition: background 0.3s;
+            }
+            .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(120deg, #98caff 30%, #ffe29b 100%);
+            }
+            @keyframes fade-in-up {
+                0% { opacity: 0; transform: translateY(24px);}
+                100% { opacity: 1; transform: translateY(0);}
+            }
+            .animate-fade-in-up {
+                animation: fade-in-up 0.8s cubic-bezier(0.4,0,0.2,1) both;
+            }
+        }
+ /* Back to top button */
+    .back-to-top {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+ /* Improved animations */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+    
+    .fade-in-up-delay-1 { animation-delay: 0.15s; }
+    .fade-in-up-delay-2 { animation-delay: 0.3s; }
+    .fade-in-up-delay-3 { animation-delay: 0.45s; }
+    .fade-in-up-delay-4 { animation-delay: 0.6s; }
+    .fade-in-up-delay-5 { animation-delay: 0.75s; }
+    .fade-in-up-delay-6 { animation-delay: 0.9s; }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    
+    /* Enhanced gradient underline */
+    .underline-gradient {
+      background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899, #f59e0b);
+      height: 4px;
+      border-radius: 2px;
+      animation: moveGradient 3s ease infinite;
+      background-size: 300% 100%;
+    }
+    
+    @keyframes moveGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    /* Improved card hover effects */
+    .portfolio-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-origin: center;
+    }
+    
+    .portfolio-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    
+    .portfolio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.01) 40%, rgba(0, 0, 0, 0.8) 100%);
+      opacity: 0.8;
+      z-index: 1;
+      transition: opacity 0.4s ease;
+    }
+    
+    .portfolio-card:hover::before {
+      opacity: 0.9;
+    }
+    
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Enhanced button animations */
+    .btn-hover-effect {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    
+    .btn-hover-effect::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: all 0.6s;
+    }
+    
+    .btn-hover-effect:hover::before {
+      left: 100%;
+    }
+   
+       /* Terms page specific styles */
+            .terms-container {
+                @apply max-w-3xl mx-auto px-4 py-12;
+            }
+            .terms-title {
+                @apply text-4xl font-bold text-center mb-8 gradient-text;
+            }
+            .terms-intro {
+                @apply text-lg text-center mb-12 text-gray-600 dark:text-gray-300;
+            }
+            .terms-section {
+                @apply mb-10 p-6 glass-effect rounded-xl;
+            }
+            .terms-heading {
+                @apply text-2xl font-semibold mb-4 text-primary dark:text-accent;
+            }
+            .terms-content {
+                @apply text-gray-700 dark:text-gray-300 leading-relaxed;
+            }
+            .terms-list {
+                @apply list-decimal pl-6 mt-4 space-y-3;
+            }
+            .terms-list li {
+                @apply mb-3;
+            }
+            .contact-button {
+                @apply mt-8 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary;
+            }
+
+        </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 glass-effect shadow-md border-b border-gray-200 dark:border-darkCard">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
+                    <span class="text-xl font-bold gradient-text">Jiya</span>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active-nav" data-page="home">Home</a>
+                    <a href="#portfolio" class="nav-link" data-page="portfolio">Web Projects</a>
+                    <a href="#education" class="nav-link" data-page="education">Education</a>
+                    <a href="#blog" class="nav-link" data-page="blog">Blog</a>
+                    <a href="#about" class="nav-link" data-page="about">About</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                        <i class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
+                    </button>
+                    
+                    <button class="md:hidden" id="mobileMenuButton">
+                        <i class="fas fa-bars text-xl text-gray-700 dark:text-darkText"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="hidden mt-4 md:hidden" id="mobileMenu">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="nav-link active-nav" data-page="home">Home</a>
+                    <a href="#portfolio" class="nav-link" data-page="portfolio">Projects</a>
+                    <a href="#education" class="nav-link" data-page="education">Education</a>
+                    <a href="#blog" class="nav-link" data-page="blog">Blog</a>
+                    <a href="#about" class="nav-link" data-page="about">About</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Home Page -->
+        <div id="home" class="page active-page">
+            <section class="min-h-screen flex items-center justify-center py-16 px-4">
+                <div class="container mx-auto">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                        <div class="md:w-1/2 relative">
+                            <div class="floating-shape w-80 h-80 mx-auto">
+                                <div class="relative">
+                                    <div class="absolute -ins-4 bg-gradient-to-r from-primary to-secondary rounded-full opacity-20 blur-xl"></div>
+                                    <div class="relative glass-effect dark:dark-glass rounded-2xl p-2">
+                                        <img src="https://img.freepik.com/premium-vector/woman-working-laptop-with-coffee-plants_7393-3489.jpg" 
+                                             alt="Jiya - Designer" class="rounded-2xl w-full h-auto">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating badges -->
+                            <div class="absolute -top-4 -left-4 glass-effect dark:dark-glass rounded-full p-3 shadow-lg floating-shape">
+                                <i class="fas fa-paint-brush text-primary text-xl"></i>
+                            </div>
+                            <div class="absolute -bottom-4 -right-4 glass-effect dark:dark-glass rounded-full p-3 shadow-lg floating-shape" style="animation-delay: 2s;">
+                                <i class="fas fa-code text-secondary text-xl"></i>
+                            </div>
+                            <div class="absolute top-1/2 -right-8 glass-effect dark:dark-glass rounded-full p-3 shadow-lg floating-shape" style="animation-delay: 4s;">
+                                <i class="fas fa-pen-nib text-accent text-xl"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-1/2 text-center md:text-left">
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-playfair">
+                                Hi, I'm <span class="gradient-text">Jiya</span>
+                            </h1>
+                            <div class="typewriter mb-6">
+                                <h2 class="text-2xl md:text-3xl text-gray-700 dark:text-darkText">
+                                    Creative Designer & Developer
+                                </h2>
+                            </div>
+                            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                                Delivers beautifully crafted websites, compelling graphics, and content writing to ensure every interaction inspires action, visually striking and conversion-optimized digital experiences that amplifies your brand.
+                            </p>
+                            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                                <a href="#portfolio" class="btn-primary navigate-to px-8 py-4 text-lg" data-page="portfolio">
+                                    View My Work <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                                <a href="#contact" class="btn-secondary navigate-to px-8 py-4 text-lg" data-page="contact">
+                                    Contact Me <i class="fas fa-paper-plane ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="py-16 bg-white/50 dark:bg-darkCard/50 backdrop-blur-sm">
+                <div class="container mx-auto px-4">
+                    <h2 class="section-title font-playfair">What I Do</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-animation">
+                        <div class="card-hover glass-effect dark:dark-glass rounded-2xl p-8 text-center">
+                            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                                <i class="fas fa-paint-brush text-primary text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 font-playfair">Graphic Design</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Logo design, poster and marketing materials that capture your brand's essence.</p>
+                        </div>
+                        
+                        <div class="card-hover glass-effect dark:dark-glass rounded-2xl p-8 text-center">
+                            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-secondary/10 flex items-center justify-center">
+                                <i class="fas fa-code text-secondary text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 font-playfair">Web Design</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Effortlessly responsive designs—delivering beautiful experience on all devices and drive conversions.</p>
+                        </div>
+                        
+                        <div class="card-hover glass-effect dark:dark-glass rounded-2xl p-8 text-center">
+                            <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
+                                <i class="fas fa-pen-nib text-accent text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4 font-playfair">Content Writing</h3>
+                            <p class="text-gray-600 dark:text-gray-300">Engaging content that tells your brand's story and connects with your audience.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Featured Work Preview -->
+            <section class="py-16 bg-gray-100/50 dark:bg-darkBg">
+                <div class="container mx-auto px-4">
+                    <h2 class="section-title">Featured Work</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        <div class="card group overflow-hidden">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Web Design Project" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2"> Intractive design</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Creating visually appealing and user-friendly interfaces for websites and applications. Design layouts, buttons, and interactive elements to ensure a seamless and engaging user experience, bridges aesthetics and functionality to enhance usability.</p>
+                                <a href="https://jiya1507.github.io/universe/" 
+   target="_blank" 
+   class="px-6 py-2 rounded-lg bg-[#3b82f6] hover:bg-[#2563eb] shadow-inner shadow-[#71b3ff55] text-white font-semibold transition-all duration-300 scale-100 hover:scale-105">View Project →</a>
+                            </div>
+                        </div>
+                        
+                        <div class="card group overflow-hidden">
+                            <div class="h-48 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Graphic Design Project" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Content Writing</h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Creates engaging and informative written material for websites, blogs, and social media to attract and retain an audience. They research topics thoroughly and tailor content to meet the needs of the target audience, enhancing brand visibility and communication.</p>
+                               <a href="https://medium.com/@jiya15nshah1" 
+   target="_blank" 
+   class="px-6 py-2 rounded-lg bg-[#3b82f6] hover:bg-[#2563eb] shadow-inner shadow-[#71b3ff55] text-white font-semibold transition-all duration-300 scale-100 hover:scale-105">View blogs →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-12">
+                        <a href="#portfolio" class="btn-primary navigate-to" data-page="portfolio">View Full Portfolio</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials Section -->
+            <section class="py-16 bg-white/50 dark:bg-darkCard/50 backdrop-blur-sm">
+                <div class="container mx-auto px-4">
+                    <h2 class="section-title">Reviews</h2>
+                    
+                    <div class="max-w-4xl mx-auto">
+                        <div class="card p-8 text-center">
+                            <div class="text-amber-400 text-4xl mb-4">Ui design</div>
+                            <p class="text-lg text-gray-600 dark:text-gray-300 italic mb-6">
+                                Jiya delivered exceptional design work that perfectly captured task purpose . Her attention to detail and creative approach resulted in a website that not only looks stunning but also performs beautifully.
+                            </p>
+                            <div class="font-semibold text-gray-800 dark:text-white"> Forge </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+     <section class="max-w-7xl mx-auto my-20 px-8">
+    <div class="bg-[#2c2f48] rounded-xl p-10 flex justify-between gap-20 max-w-5xl mx-auto">
+      <!-- Left Text block -->
+      <div class="max-w-xl leading-relaxed text-lg font-semibold text-gray-300">
+        <h2 class="text-4xl font-extrabold leading-tight tracking-tight mb-6">
+          <span class="text-[#5d8bec]">Elevate</span>
+          <span class="text-gray-400"> Your </span>
+          <span class="text-[#d8bc58]">Brand With</span><br/>
+          <span class="text-[#5d8bec]">Purposeful</span>
+          <span class="text-gray-400"> Design</span>
+        </h2>
+        <p class="font-medium text-gray-300">
+          I create visually striking, conversion-optimized digital experiences for ambitious brands.<br />
+          Whether you need a <span class="text-[#5d8bec] underline decoration-[#5d8bec] decoration-2">stunning website</span>, <br /> 
+          <span class="text-[#d8bc58] font-semibold">impactful graphics</span>, or <span class="text-[#5d8bec] underline decoration-[#5d8bec] decoration-2">engaging content</span>, my work blends originality, modernity, and measurable results.
+        </p>
+      </div>
+
+      <!-- Right features list -->
+      <ul class="flex flex-col justify-center gap-6 text-white font-semibold text-lg max-w-xs">
+        <li class="flex items-center gap-4">
+          <svg class="w-7 h-7 text-[#5d8bec]" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" >
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          Clear Communication
+        </li>
+        <li class="flex items-center gap-4">
+          <svg class="w-7 h-7 text-[#d8bc58]" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" >
+            <rect x="3" y="7" width="18" height="14" rx="2" ry="2"/>
+            <line x1="3" y1="11" x2="21" y2="11"/>
+          </svg>
+           Quality work
+        </li>
+        <li class="flex items-center gap-4">
+          <svg class="w-7 h-7 text-[#5d8bec]" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" >
+            <polyline points="12 19 12 10 15 13"/>
+            <line x1="12" y1="10" x2="9" y2="13"/>
+            <line x1="9" y1="13" x2="9" y2="21"/>
+          </svg>
+          Smart work with creativity
+        </li>
+      </ul>
+    </div>
+  </section>
+        </div>
+        </div>
+        <!-- Portfolio Page -->
+        <div id="portfolio" class="page">
+              <!-- Main Portfolio Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <section>
+      <!-- Enhanced Hero Section -->
+      <div class="flex flex-col items-center mb-16">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 fade-in-up" style="animation-delay:.1s;">
+          Web Design Portfolio
+        </h1>
+        <div class="underline-gradient w-56 mt-4 fade-in-up" style="animation-delay:0.3s;"></div>
+      </div>
+      
+      <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 text-center fade-in-up" style="animation-delay:0.45s;">
+       Dive into web design projects shaped by bold creativity, meticulous UX, and the latest in web innovation—each crafted to deliver powerful results for forward-thinking.
+      </p>
+
+      <!-- Improved Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        <!-- Card 1 -->
+        <div class="portfolio-card group rounded-2xl overflow-hidden fade-in-up fade-in-up-delay-1">
+          <div class="relative h-52 overflow-hidden">
+            <img src="https://community.fabric.microsoft.com/t5/image/serverpage/image-id/343070i9EBE12A9E6AC8E86?v=v2"
+              alt="Brand Website Redesign" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          </div>
+          <div class="card-content p-5 bg-slate-800">
+            <div class="flex gap-2 mb-3">
+              <span class="bg-blue-500/20 text-blue-300 text-xs px-3 py-1 rounded-full">WEB</span>
+              <span class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full">Data</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2 group-hover:text-blue-400 transition-colors">Stock market dashboard</h3>
+            <p class="text-sm text-slate-400 mb-4">
+             A dynamic dashboard that integrates with financial APIs to render,visualize and analyze live market data. This dashboard dynamically updates equity prices, trends, and portfolio performance for actionable insights.
+            </p>
+            <a href="https://jiya1507.github.io/stock-dashboard.github.io/" target="_blank" 
+              class="inline-flex items-center text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+              View Project
+              <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="portfolio-card group rounded-2xl overflow-hidden fade-in-up fade-in-up-delay-2">
+          <div class="relative h-52 overflow-hidden">
+            <img src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/68150470e749dc001d190bec.jpg"
+              alt="Luxury Brochure Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          </div>
+          <div class="card-content p-5 bg-slate-800">
+            <div class="flex gap-2 mb-3">
+              <span class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full">HTML/CSS</span>
+              <span class="bg-blue-700/20 text-blue-300 text-xs px-3 py-1 rounded-full">API</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2 group-hover:text-blue-400 transition-colors">Film Recommendation system</h3>
+            <p class="text-sm text-slate-400 mb-4">
+             A film-discovery platform that uses collaborative filtering to analyze user preferences and generate personalized recommendations. It connects users with films that match their unique taste beyond basic genre filters.
+            </p>
+            <a href="https://jiya1507.github.io/film_recommandation/" target="_blank"
+              class="inline-flex items-center text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+              View Project
+              <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="portfolio-card group rounded-2xl overflow-hidden fade-in-up fade-in-up-delay-3">
+          <div class="relative h-52 overflow-hidden">
+            <img src="https://techcrunch.com/wp-content/uploads/2021/02/alexander-shatov-JlO3-oY5ZlQ-unsplash.jpg"
+              alt="Content Strategy & Copywriting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          </div>
+          <div class="card-content p-5 bg-slate-800">
+            <div class="flex gap-2 mb-3">
+              <span class="bg-blue-700/20 text-blue-300 text-xs px-3 py-1 rounded-full">HTML/CSS</span>
+              <span class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full">Javascript</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2 group-hover:text-blue-400 transition-colors">Spotify Clone</h3>
+            <p class="text-sm text-slate-400 mb-4">
+             A responsive front-end replica of the Spotify landing page, built with semantic HTML and modern CSS. It accurately mimics the original layout, styling, and interactive components to demonstrate proficiency in UI implementation.
+            </p>
+            <a href="https://jiya1507.github.io/spotify/" target="_blank"
+              class="inline-flex items-center text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+              View Project
+              <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="portfolio-card group rounded-2xl overflow-hidden fade-in-up fade-in-up-delay-4">
+          <div class="relative h-52 overflow-hidden">
+            <img src="https://infonative.net/uploads/content_images/cover_258VpUT5oEolJmP.jpg"
+              alt="Animated Product Mockups" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          </div>
+          <div class="card-content p-5 bg-slate-800">
+            <div class="flex gap-2 mb-3">
+              <span class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full">UI/UX</span>
+              <span class="bg-blue-500/20 text-blue-300 text-xs px-3 py-1 rounded-full">HTML/CSS</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2 group-hover:text-blue-400 transition-colors">E-Learning landing page</h3>
+            <p class="text-sm text-slate-400 mb-4">
+             A modern, responsive landing page for an e-learning platform featuring course category filters, student testimonial and a mobile-first responsive layout using CSS Flexbox/Grid.
+            </p>
+            <a href="https://jiya1507.github.io/codecave_elearning/" target="_blank"
+              class="inline-flex items-center text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+              View Project
+              <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="portfolio-card group rounded-2xl overflow-hidden fade-in-up fade-in-up-delay-5">
+          <div class="relative h-52 overflow-hidden">
+            <img src="https://img.freepik.com/premium-vector/futuristic-real-estate-home-purchase-concept-with-glow-low-poly-hand-holding-residential-building_67515-1008.jpg"
+              alt="Startup Landing Page" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          </div>
+          <div class="card-content p-5 bg-slate-800">
+            <div class="flex gap-2 mb-3">
+              <span class="bg-blue-500/20 text-blue-300 text-xs px-3 py-1 rounded-full">WEB</span>
+              <span class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full">UX/UI</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2 group-hover:text-blue-400 transition-colors">E-state Landing Page</h3>
+            <p class="text-sm text-slate-400 mb-4">
+             A fully responsive real estate landing page built with HTML and CSS. Highlights proficiency in creating an aesthetically pleasing, mobile-responsive layout through Flexbox and CSS Grid.
+            </p>
+            <a href="https://jiya1507.github.io/codecave_estate/" target="_blank"
+              class="inline-flex items-center text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+              View Project
+              <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="portfolio-card group rounded-2xl overflow-hidden fade-in-up fade-in-up-delay-6">
+          <div class="relative h-52 overflow-hidden">
+            <img src="https://images.ctfassets.net/4cd45et68cgf/6wHlMkLFTfKk3cQrTYnVLL/bdbbd0da407283d0833aa4575b4e81dd/Netflix_LinkdinHeader_N_Texture_5.png?w=2000"
+              alt="Editorial Content Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          </div>
+          <div class="card-content p-5 bg-slate-800">
+            <div class="flex gap-2 mb-3">
+              <span class="bg-blue-700/20 text-blue-300 text-xs px-3 py-1 rounded-full">HTML/CSS</span>
+              <span class="bg-amber-500/20 text-amber-300 text-xs px-3 py-1 rounded-full">DESIGN</span>
+            </div>
+            <h3 class="font-bold text-xl mb-2 group-hover:text-blue-400 transition-colors">Netflix Clone</h3>
+            <p class="text-sm text-slate-400 mb-4">
+             A responsive Netflix UI clone featuring a dynamic hero banner, FAQs section, Built with modern CSS and JavaScript to replicate the original's interactive experience.
+            </p>
+            <a href="https://jiya1507.github.io/bhartintern_netflix/" target="_blank"
+              class="inline-flex items-center text-sm font-medium text-blue-400 group-hover:text-blue-300 transition-colors">
+              View Project
+              <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Improved CTA Button -->
+      <div class="flex justify-center mt-16 fade-in-up fade-in-up-delay-2">
+        <button class="btn-hover-effect bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold px-8 py-4 rounded-xl text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          Start a Project
+        </button>
+      </div>
+    </section>
+  <!-- Back to top button -->
+  <button class="back-to-top fixed bottom-6 right-6 w-12 h-12 rounded-full bg-blue-600 text-white shadow-lg flex items-center justify-center hover:bg-blue-500 transition-colors" id="back-to-top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+    </svg>
+  </button>
+  </main>
+
+        </div>
+
+        <!-- Education Page -->
+        <div id="education" class="page education-section">
+            <div class="education-container">
+                <!-- Title -->
+                <section class="flex justify-center text-center">
+                    <h1 class="font-serif text-3xl md:text-4xl font-semibold text-gray-400">
+                        Education & <span class="text-yellow-gold">Certifications</span>
+                    </h1>
+                </section>
+
+                <!-- Education & Certifications Section -->
+                <section class="grid md:grid-cols-2 gap-16">
+                    <!-- Education Left Column -->
+                    <article>
+                        <div class="flex items-center gap-2 mb-5">
+                            <i class="fa-solid fa-graduation-cap text-blue-light text-xl"></i>
+                            <h2 class="text-blue-light font-semibold text-lg select-none">Education</h2>
+                        </div>
+
+                        <div class="relative">
+                            <!-- timeline line vertical -->
+                            <div class="education-timeline"></div>
+
+                            <!-- icons left timeline -->
+                            <div class="education-icon bg-blue-light text-bgdark border-yellow-gold top-[24px]">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <div class="education-icon bg-yellow-gold text-bgdark border-blue-light top-[141px] w-9 h-9">
+                                <i class="fa-solid fa-certificate"></i>
+                            </div>
+
+                            <!-- Education item 1 -->
+                          <div class="ml-12 mb-8 education-card transition-all hover:scale-[1.02] max-w-[520px]">
+    <h3 class="font-semibold text-white text-lg leading-snug mb-1">B.Tech in Computer Science and Engineering</h3>
+    <p class="text-gray-mid text-sm mb-2">GGSIP University, Delhi, India &bull; 2021 – 2025 &bull; <span class="bg-yellow-gold text-bgdark text-[13px] px-2 rounded-full font-semibold">Completed in 2025</span></p>
+    <ul class="list-disc list-inside space-y-1 text-gray-300 text-sm leading-relaxed">
+        <li>Specialized in front-end development, web technologies, and software engineering</li>
+        <li>Strong foundation in algorithms, data structures, and object-oriented programming</li>
+        <li>In-depth understanding of UI/UX design principles, human-computer interaction, and responsive design</li>
+        <li>Hands-on experience with JavaScript frameworks, HTML5, CSS3, and creative coding projects</li>
+        <li>Developed user-centric, scalable applications integrating both design aesthetics and functional efficiency</li>
+    </ul>
+</div>
+
+
+                            <!-- Education item 2 -->
+                        </div>
+                    </article>
+
+                    <!-- Certifications & Courses Right Column -->
+                    <article>
+                        <div class="flex items-center gap-2 mb-5">
+                            <i class="fa-solid fa-award text-yellow-gold text-xl"></i>
+                            <h2 class="text-yellow-gold font-semibold text-lg select-none">Certifications & Courses</h2>
+                        </div>
+
+                        <div class="flex flex-col space-y-5 max-w-md">
+                            <!-- Certification 1 -->
+                            <div class="flex items-start space-x-4 education-card transition-all hover:scale-[1.02]">
+                                <div class="w-10 h-10 shrink-0 rounded-full bg-blue-light flex items-center justify-center">
+                                    <i class="fa-solid fa-laptop-code text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold text-sm md:text-base mb-1 max-w-[400px] leading-tight">
+                                        Web Development- Infosys Certification <span class="inline-block ml-2 bg-yellow-gold text-bgdark font-semibold text-[12px] px-2 rounded-full align-middle">2023</span>
+                                    </h3>
+                                    <p class="text-gray-300 text-xs md:text-sm max-w-[400px] leading-snug">
+                                       Certified in web development with proven expertise in HTML, CSS, and JavaScript, delivering responsive and user-friendly digital solutions.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Certification 2 -->
+                            <div class="flex items-start space-x-4 education-card transition-all hover:scale-[1.02]">
+                                <div class="w-10 h-10 shrink-0 rounded-full bg-yellow-gold flex items-center justify-center">
+                                    <i class="fa-solid fa-pen-ruler text-bgdark text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold text-sm md:text-base mb-1 max-w-[400px] leading-tight">
+                                        Interaction Design Foundation: UX Certification <span class="inline-block ml-2 bg-blue-light text-bgdark font-semibold text-[12px] px-2 rounded-full align-middle">2022</span>
+                                    </h3>
+                                    <p class="text-gray-300 text-xs md:text-sm max-w-[400px] leading-snug">
+                                        Completed workshops in usability, accessibility, and human-centered UX for web and mobile.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Certification 3 -->
+                            <div class="flex items-start space-x-4 education-card transition-all hover:scale-[1.02]">
+                                <div class="w-10 h-10 shrink-0 rounded-full bg-blue-light flex items-center justify-center">
+                                    <i class="fa-brands fa-google text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-semibold text-sm md:text-base mb-1 max-w-[400px] leading-tight">
+                                        Google UX Design Professional Certificate <span class="inline-block ml-2 bg-yellow-gold text-bgdark font-semibold text-[12px] px-2 rounded-full align-none">2022</span>
+                                    </h3>
+                                    <p class="text-gray-300 text-xs md:text-sm max-w-[400px] leading-snug">
+                                        Projects in user research, prototyping, responsive design, and portfolio presentation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- Key Skills Section -->
+                <section class="flex flex-col items-center space-y-4 max-w-[960px] mx-auto text-center">
+                    <h3 class="font-semibold text-gray-400 text-lg select-none">Key <span class="text-white">Skills</span></h3>
+
+                    <ul class="flex flex-wrap justify-center gap-10 text-xs sm:text-sm max-w-[720px]">
+                        <li class="flex flex-col items-center select-none transition-transform hover:scale-110">
+                            <i class="fa-solid fa-pen-ruler text-blue-light text-2xl mb-1"></i>
+                            UI/UX Design
+                        </li>
+                        <li class="flex flex-col items-center select-none transition-transform hover:scale-110">
+                            <i class="fa-solid fa-palette text-yellow-gold text-2xl mb-1"></i>
+                            Branding & Identity
+                        </li>
+                        <li class="flex flex-col items-center select-none transition-transform hover:scale-110">
+                            <i class="fa-brands fa-html5 text-orange-500 text-2xl mb-1"></i>
+                            HTML
+                        </li>
+                        <li class="flex flex-col items-center select-none transition-transform hover:scale-110">
+                            <i class="fa-brands fa-css3-alt text-blue-400 text-2xl mb-1"></i>
+                            CSS
+                        </li>
+                        <li class="flex flex-col items-center select-none transition-transform hover:scale-110">
+                            <i class="fa-solid fa-object-group text-purple-500 text-2xl mb-1"></i>
+                            Webflow & Figma
+                        </li>
+                        <li class="flex flex-col items-center select-none transition-transform hover:scale-110">
+                            <i class="fa-solid fa-layer-group text-yellow-gold text-2xl mb-1"></i>
+                            Design Systems
+                        </li>
+                        <li class="flex flex-col items-center select-none transition-transform hover:scale-110">
+                            <i class="fa-solid fa-pen-nib text-green-400 text-2xl mb-1"></i>
+                            Content Writing
+                        </li>
+                    </ul>
+
+                    <p class="text-[10px] text-gray-600 max-w-[440px] select-none mt-0">
+                        This section is regularly updated as new education, certifications, and skills are obtained.
+                    </p>
+                </section>
+
+                <!-- Call to Action Section -->
+                <section class="max-w-[720px] bg-gray-dark rounded-xl mx-auto p-10 text-center space-y-6 select-none">
+                    <h3 class="text-xl md:text-2xl font-serif font-semibold text-gray-400">
+                        <span class="text-blue-light">Let's</span> Create <span class="text-white">Your</span> Next <span class="text-yellow-gold">Big Thing</span>
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed max-w-[480px] mx-auto">
+                        Ready to transform your brand or launch a new project?<br />
+                        Start a conversation—your vision, my expertise.
+                    </p>
+                    <div class="flex justify-center gap-6 flex-wrap">
+                        <a href="mailto:jiya15nshah@gmail.com" class="bg-blue-light hover:bg-blue-600 active:bg-blue-700 text-white flex items-center gap-2 px-6 py-2 rounded-full text-sm font-semibold transition">
+                            Email Me 
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="https://drive.google.com/file/d/1zacOahPxzB30wFSuIYkT0B3RgvcB9CRU/view?usp=sharing" download="Jiya_Resume.pdf" class="bg-yellow-gold hover:bg-yellow-500 active:bg-yellow-600 text-bgdark flex items-center gap-2 px-6 py-2 rounded-full text-sm font-semibold transition">
+                            Download Resume 
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Blog Page -->
+      <div id="blog" class="page">
+  <section class="py-16 bg-white/50 dark:bg-darkCard/50 backdrop-blur-sm min-h-screen">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <h2 class="section-title">Latest Blogs</h2>
+      <p class="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+        Explore my latest thoughts and insights on design, technology, and creativity from my Medium blog.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Blog Post 1 -->
+        <article class="card hover:shadow-2xl transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden bg-white dark:bg-darkCard">
+          <img src="https://images.unsplash.com/photo-1584921442264-6c464e49bb1d?q=80&w=1248&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dark Sky Tourism India" class="h-48 w-full object-cover" />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold mb-2">
+              <a href="https://medium.com/@jiya15nshah1/dark-sky-tourism-india-a-new-frontier-c8825c02c27c" 
+                 target="_blank" class="hover:text-primary dark:hover:text-accent">
+                Dark Sky Tourism India: A New Frontier
+              </a>
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm flex-grow">
+              Dark sky tourism India is no longer limited to stargazing. It is intrinsically connected with the conservation of natural nightscapes and…
+            </p>
+            <a href="https://medium.com/@jiya15nshah1/dark-sky-tourism-india-a-new-frontier-c8825c02c27c" 
+               target="_blank" 
+               class="btn-secondary inline-block mt-auto self-start">
+              Read More &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 2 -->
+        <article class="card hover:shadow-2xl transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden bg-white dark:bg-darkCard">
+          <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*z0FPzgPSz4mwZrEJ" alt="Top Astro Tourism Destinations" class="h-48 w-full object-cover" />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold mb-2">
+              <a href="https://medium.com/@jiya15nshah1/top-astro-tourism-destinations-india-9bdb15be8a7c" 
+                 target="_blank" class="hover:text-primary dark:hover:text-accent">
+                Top Astro Tourism Destinations India
+              </a>
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm flex-grow">
+              The Best Stargazing Destinations
+              Top Astro Tourism Destinations India
+              Hanle, Ladakh
+              Spiti Valley, Himachal Pradesh
+              Rann of Kutch, Gujarat....
+            </p>
+           <a href="https://medium.com/@jiya15nshah1/top-astro-tourism-destinations-india-9bdb15be8a7c" 
+               target="_blank" 
+               class="btn-secondary inline-block mt-auto self-start">
+              Read More &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 3 -->
+        <article class="card hover:shadow-2xl transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden bg-white dark:bg-darkCard">
+          <img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*HOJm3ejtPzOR2Bv7" alt="Exploring Astro Tourism in India" class="h-48 w-full object-cover" />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold mb-2">
+              <a href="https://medium.com/@jiya15nshah1/exploring-astro-tourism-in-india-a6c03f7600f9" 
+                 target="_blank" class="hover:text-primary dark:hover:text-accent">
+                Exploring Astro Tourism in India
+              </a>
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm flex-grow">
+              Astro tourism in India is soaring through the roof, wooing the wanderers who are ready to swap the glare of city lights with the…
+            </p>
+            <a href="https://medium.com/@jiya15nshah1/exploring-astro-tourism-in-india-a6c03f7600f9" 
+               target="_blank" 
+               class="btn-secondary inline-block mt-auto self-start">
+              Read More &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 4 -->
+        <article class="card hover:shadow-2xl transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden bg-white dark:bg-darkCard">
+          <img src="https://blogs.iadb.org/caribbean-dev-trends/wp-content/uploads/sites/34/2017/12/Blockchain1.jpg" alt="Understanding Blockchain" class="h-48 w-full object-cover" />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold mb-2">
+              <a href="https://medium.com/@jiya15nshah1/understanding-blockchain-the-backbone-of-digital-trust-011a12c05a92" 
+                 target="_blank" class="hover:text-primary dark:hover:text-accent">
+                Understanding Blockchain: The Backbone of Digital Trust
+              </a>
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm flex-grow">
+              Blockchain has emerged as one of the most transformative technologies of the 21st century, redefining how we record, verify, and share…
+            </p>
+            <a href="https://medium.com/@jiya15nshah1/understanding-blockchain-the-backbone-of-digital-trust-011a12c05a92" 
+               target="_blank" 
+               class="btn-secondary inline-block mt-auto self-start">
+              Read More &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 5 -->
+        <article class="card hover:shadow-2xl transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden bg-white dark:bg-darkCard">
+          <img src="https://go4hosting.com/wp-content/uploads/2021/02/Cloudcomoing.png" alt="Cloud Hosting Services" class="h-48 w-full object-cover" />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold mb-2">
+              <a href="https://medium.com/@jiya15nshah1/cloud-hosting-services-the-future-of-reliable-and-scalable-web-solutions-ad24d7886677" 
+                 target="_blank" class="hover:text-primary dark:hover:text-accent">
+                Cloud Hosting Services: The Future of Reliable and Scalable Web Solutions
+              </a>
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm flex-grow">
+              Cloud Hosting Services: The Future of Reliable and Scalable Web Solutions
+            </p>
+            <a href="https://medium.com/@jiya15nshah1/cloud-hosting-services-the-future-of-reliable-and-scalable-web-solutions-ad24d7886677" 
+               target="_blank" 
+               class="btn-secondary inline-block mt-auto self-start">
+              Read More &rarr;
+            </a>
+          </div>
+        </article>
+
+        <!-- Blog Post 6 -->
+        <article class="card hover:shadow-2xl transition-shadow duration-300 flex flex-col rounded-lg overflow-hidden bg-white dark:bg-darkCard">
+          <img src="https://amazinum.com/wp-content/uploads/2022/09/picq111.jpg" alt="Driving Profits - Inventory Management" class="h-48 w-full object-cover" />
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-semibold mb-2">
+              <a href="https://medium.com/@jiya15nshah1/openais-new-model-launch-revolutionizes-nlp-532dcec4a444" 
+                 target="_blank" class="hover:text-primary dark:hover:text-accent">
+               OpenAI’s New Model Launch Revolutionizes NLP
+              </a>
+            </h3>
+            <p class="text-gray-700 dark:text-gray-300 mb-6 text-sm flex-grow">
+             OpenAI has recently launched a groundbreaking model that significantly enhances natural language processing capabilities.
+            </p>
+            <a href="https://medium.com/@jiya15nshah1/openais-new-model-launch-revolutionizes-nlp-532dcec4a444" 
+               target="_blank" 
+               class="btn-secondary inline-block mt-auto self-start">
+              Read More &rarr;
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+        <!-- About Page -->
+        <div id="about" class="page about-container">
+            <div class="w-full max-w-5xl mx-auto flex-1 flex flex-col justify-between px-4 md:px-10 pt-6 pb-0 relative z-10 animate-fade-in-up">
+                <!-- BG Blobs -->
+                <div class="fixed top-[-20%] left-[-15%] w-[45vw] h-[45vw] bg-gradient-to-tr from-[#71b3ff44] to-[#ffe29b33] rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+                <div class="fixed bottom-[-20%] right-[-15%] w-[45vw] h-[45vw] bg-gradient-to-tr from-[#ffe29b33] to-[#d3d3ff44] rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+                
+                <!-- Main Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-8 mt-8">
+                    <!-- About Card with integrated Skills -->
+                    <section class="about-card">
+                        <div class="absolute -top-10 -left-12 w-36 h-36 bg-gradient-to-br from-[#71b3ff]/40 to-[#ffe29b]/40 rounded-full blur-2xl opacity-40 pointer-events-none"></div>
+                        <h2 class="about-heading">About</h2>
+                        <p class="about-text">
+                            Hi, I'm Jiya, A motivated Computer Science Engineering student with a strong academic record and a passion for front-end development and UI/UX design. Equipped with hands-on experience from multiple internships in web development, graphic design, and content creation, I have successfully built replicas of popular platforms like Spotify and Netflix. My technical skills span JavaScript, and modern front-end tools, complemented by strong soft skills in teamwork, communication, and creative problem-solving. Eager to apply my versatile skill set in a dynamic tech environment.
+                        </p>
+                        <h3 class="about-subheading">Philosophy</h3>
+                        <p class="about-subtext">
+                            I believe in purposeful aesthetics, strategic thinking, and the power of story-driven visuals. My approach blends modernity, innovation, and reliability—so every project stands out and delivers results.
+                        </p>
+
+                        <!-- Skills & Tools section inside About -->
+                        <h3 class="text-lg font-semibold text-[#b5b8d1] mb-2 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[#71b3ff]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M12 6l3 6h-6l3-6zM5 18h14"/>
+                            </svg>
+                            Skills & Tools
+                        </h3>
+                        <p class="mb-6 text-[#a8aedc] leading-relaxed max-w-prose">
+                            Combining creative design with technical expertise,I specialize in a diverse set of skills and tools that empower me to create elegant and effective digital solutions. From design to code.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                            <div class="skill-box text-[#e4e7fb]">UI/UX Design</div>
+                            <div class="skill-box text-[#ffe29b]">UX writing</div>
+                            <div class="skill-box text-[#71b3ff]">Graphic Design</div>
+                            <div class="skill-box text-[#71b3ff]">Wireframing</div>
+                            <div class="skill-box text-[#71b3ff]">Presentation Specialist</div>
+                            <div class="skill-box text-[#98caff]">Content Writing</div>
+                            <div class="skill-box text-[#cdd9ff]">Figma</div>
+                            <div class="skill-box text-[#ffe29b]">HTML &amp; CSS</div>
+                            <div class="skill-box text-[#cdd9ff]">Canva</div>
+                        </div>
+
+                        <div class="flex gap-4">
+                           <a href="https://drive.google.com/file/d/1zZSjPt-IoWW4aVzU4l9U1A-7vwqawGi7/view?usp=sharing" 
+   target="_blank" 
+   class="px-6 py-2 rounded-lg bg-[#3b82f6] hover:bg-[#2563eb] shadow-inner shadow-[#71b3ff55] text-white font-semibold transition-all duration-300 scale-100 hover:scale-105">
+   View Portfolio
+</a>
+
+                            <a href="#" class="px-6 py-2 rounded-lg bg-[#ffe29b] text-[#23244b] hover:bg-yellow-200 shadow-inner shadow-yellow-100 font-semibold transition-all duration-300 scale-100 hover:scale-105">
+                                Download Resume
+                            </a>
+                        </div>
+                    </section>
+                    
+                    <!-- Experience & Achievements -->
+                    <section class="rounded-2xl p-8 bg-white/5 border border-white/10 shadow-xl backdrop-blur-md">
+                        <h2 class="text-2xl font-semibold text-white mb-6">Experience & Achievements</h2>
+                        <div class="timeline-container">
+                            <!-- Timeline items -->
+                            <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                                <div class="timeline-dot">  </div>
+                                <div class="mb-4">
+                                    <div class="font-bold text-indigo-400 mb-1">..June 2025 – august 2025</div>
+                                    <div class="font-semibold text-xl mb-2">Content Writer, Ampli5 Pvt. Ltd (Freelancer)</div>
+                                    <div class="text-[#b5b8d1]">Crafted SEO-optimized digital content and blogs, supporting brand narrative and promotional strategies.</div>
+                                </div>
+
+                            <div class="timeline-item" data-aos="fade-right">
+                                <div class="timeline-dot">  </div>
+                                <div class="mb-4">
+                                    <div class="font-bold text-yellow-400 mb-1">..June 2025 – August 2025</div>
+                                    <div class="font-semibold text-xl mb-2">Content Writer, Maantech Pvt. Ltd (Noida, Delhi)</div>
+                                    <div class="text-[#b5b8d1]">Wrote, reviewed, and edited engaging content for websites and blogs. Developed creative copy, researched topics, and ensured content quality.</div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                                <div class="timeline-dot">  </div>
+                                <div class="mb-4">
+                                    <div class="font-bold text-blue-400 mb-1">..Jan 2025 – Feb 2025</div>
+                                    <div class="font-semibold text-xl mb-2"> Graphic design Intern, Inamigos foundation</div>
+                                    <div class="text-[#b5b8d1]">Assisted in creating visually compelling graphics and layouts for digital media, collaborating closely with senior designers to enhance brand aesthetics and communication.</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                                <div class="timeline-dot"></div>
+                                <div class="mb-4">
+                                    <div class="font-bold text-green-400 mb-1">..Jan 2024 – Feb 2024</div>
+                                    <div class="font-semibold text-xl mb-2">Product designer Intern, GAO Tek inc.(Remote)</div>
+                                    <div class="text-[#b5b8d1]">Contributed to product design by creating user-centric wireframes, collaborating closely with cross-functional teams to enhance usability and visual appeal.</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
+                                <div class="timeline-dot"></div>
+                                <div class="card bg-gradient-to-r from-blue-900 to-purple-900 p-4">
+                                    <div class="font-bold text-blue-300 mb-1">Certificates & Achievements</div>
+                                    <div class="text-[#b5b8d1]">
+                        
+                               Participated in numerous prestigious national and international quizzes and challenges, including those organized by Maruti Suzuki, Xiaomi, Coca-Cola, Flipkart, Asian Paints, Tata, TVS Credit, and IIM Lucknow. Conducted research and authored a paper titled "A Review on the New Age Technology Web 3.0: Blockchain," demonstrating strong engagement in emerging technologies and competitive problem-solving from March 2023 to present.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <section class="py-16 bg-gray-100/50 dark:bg-darkBg">
+                <div class="container mx-auto px-4">
+                    <h1 class="text-5xl font-extrabold text-center text-blue-300 mb-10">Contact</h1>
+                    
+                    <div class="flex flex-col lg:flex-row justify-center items-start gap-8 max-w-5xl mx-auto">
+                        <!-- Left Side - Contact Box -->
+                        <div class="card flex flex-col items-center w-full lg:max-w-md p-24">
+                            <div class="contact-icon mb-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2 text-center">Let's Connect</h2>
+                            <p class="mb-6 text-center text-gray-600 dark:text-darkText">
+                                Ready for your next creative leap? Email me or reach out on social media. I'll respond within 1-2 business days.
+                            </p>
+                            <a href="mailto:jiya15nshah@gmail.com" class="btn-primary mb-6">
+                                Email Me
+                            </a>
+                            <div class="flex space-x-6 mt-4">
+                                <a href="https://www.linkedin.com/in/jiya-shah-a02676236/" target="_blank" class="text-gray-600 dark:text-darkText hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/Jiya1507" target="_blank" class="text-gray-600 dark:text-darkText hover:text-gray-800 dark:hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.795-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <a href="mailto:jiya15nshah@gmail.com" class="text-gray-600 dark:text-darkText hover:text-red-500 dark:hover:text-red-400 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 12.713l-11.985-9.713h23.970l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Side - Info Boxes -->
+                        <div class="flex flex-col space-y-8 w-full lg:max-w-md">
+                            <!-- Response Box -->
+                            <div class="card flex flex-col items-center p-6">
+                                <div class="contact-icon mb-2" style="background-color: rgba(251, 191, 36, 0.1);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-600 dark:text-darkText text-sm mb-1">Typical Response:</span>
+                                <span class="text-blue-500 dark:text-blue-400 text-lg font-medium">1–2 business days</span>
+                            </div>
+
+                            <!-- Location Box -->
+                            <div class="card flex flex-col items-center p-6">
+                                <div class="contact-icon mb-2" style="background-color: rgba(96, 165, 250, 0.1);">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-600 dark:text-darkText text-sm mb-1">Based in:</span>
+                                <span class="text-amber-500 dark:text-amber-400 text-lg font-semibold">Global / Remote</span>
+                            </div>
+
+                            <!-- Availability Box -->
+                            <div class="card flex flex-col items-center p-6">
+                                <div class="contact-icon mb-2" style="background-color: rgba(167, 139, 250, 0.1;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-600 dark:text-darkText text-sm mb-1">Current Availability:</span>
+                                <span class="text-green-500 dark:text-green-400 text-lg font-semibold">Accepting New Projects</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+         <!-- terms and condtions -->
+       <!-- Terms & Conditions Page -->
+        <div id="terms-conditions" class= "page terms-container">
+            <h1 class="terms-title">Terms & Conditions</h1>
+            <p class="terms-intro">By accessing and using this website, you agree to the following terms and conditions. Please read them carefully.</p>
+            
+            <div class="terms-section">
+                <h2 class="terms-heading">1. Intellectual Property</h2>
+                <div class="terms-content">
+                    <p>All content, including images, designs, text, and branding, is the property of Jiya unless otherwise stated.</p>
+                    <p>No part of this website may be reproduced or used without explicit written permission.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-heading">2. Use of Website</h2>
+                <div class="terms-content">
+                    <p>This portfolio is for viewing purposes only. Commercial use, copying, or redistribution is prohibited.</p>
+                    <p>Do not attempt to misuse or disrupt the site or its content.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-heading">3. External Links</h2>
+                <div class="terms-content">
+                    <p>This site may link to third-party platforms. Jiya is not responsible for their content or privacy practices.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-heading">4. Disclaimer</h2>
+                <div class="terms-content">
+                    <p>All information is presented as-is, without warranties of any kind.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-heading">5. Limitation of Liability</h2>
+                <div class="terms-content">
+                    <p>Jiya is not liable for any damages arising from use of this website.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-heading">6. Changes to Terms</h2>
+                <div class="terms-content">
+                    <p>Terms may be updated; continued use of this site constitutes acceptance of any changes.</p>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <h2 class="terms-heading">7. Contact</h2>
+                <div class="terms-content">
+                    <p>For questions about these terms, contact Jiya directly.</p>
+                    <a href="mailto:jiya15nshah@gmail.com" class="contact-button mt-6">
+                        <i class="fas fa-envelope mr-2"></i> Contact Jiya
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary"></div>
+                        <span class="text-xl font-bold gradient-text">Jiya</span>
+                    </div>
+                    <p class="mt-2 text-gray-400">Graphic & Web Designer</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#terms-conditions" class="text-gray-400 hover:text-accent navigate-to" data-page="terms-conditions">Terms &     Conditions</a>
+                   
+                    <a href="#contact" class="text-gray-400 hover:text-accent navigate-to" data-page="contact">Contact</a>
+                </div>
+
+                <div class="flex space-x-4">
+                    <a href="https://www.linkedin.com/in/jiya-shah-a02676236/" target="_blank" class="text-gray-400 hover:text-blue-400">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="https://github.com/Jiya1507" target="_blank" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="mailto:jiya15nshah@gmail.com" class="text-gray-400 hover:text-red-400">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Jiya. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-in-out',
+        });
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+        
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Page navigation functionality
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navigateButtons = document.querySelectorAll('.navigate-to');
+        
+        function showPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active-page');
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Update navigation links
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active-nav');
+                } else {
+                    link.classList.remove('active-nav');
+                }
+            });
+            
+            // Close mobile menu if open
+            mobileMenu.classList.add('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Add event listeners to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+        
+        // Add event listeners to navigate buttons
+        navigateButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = button.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+        
+        // Portfolio filtering functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        if (filterButtons.length > 0) {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active filter button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-white');
+                        btn.classList.add('bg-gray-200', 'dark:bg-gray-700');
+                    });
+                    
+                    button.classList.remove('bg-gray-200', 'dark:bg-gray-700');
+                    button.classList.add('bg-primary', 'text-white');
+                    
+                    // Filter portfolio items
+                    const filterValue = button.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Contact form handling
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+    // Back to top button
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
