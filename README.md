@@ -40,8 +40,8 @@ I am completed  B.Tech in Computer Science & Engineering from GGSIP university, 
 
 - Authored a research paper titled "A Review on the New Age Technology Web 3.0: Blockchain."
 - Regularly write tech newsletters and blogs focused on AI and emerging technologies.
+  
  Languages Known
-
 - Hindi  
 - English  
 - Gujarati
