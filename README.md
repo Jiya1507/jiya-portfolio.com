@@ -1,7 +1,7 @@
 # jiya-portfolio.com
 Here is a README.md file draft for the portfolio based on the provided resume:
 
- Jiya Shah Jain - Portfolio
+ [Jiya Shah Jain - Portfolio]([url](https://jiya1507.github.io/jiya-portfolio.com/))
 
 Welcome to the portfolio of **Jiya Shah Jain**, a passionate and skilled Computer Science & Engineering student specializing in UI/UX design, web development, and graphic design. This portfolio showcases my projects, work experience, technical skills, and achievements.
 
